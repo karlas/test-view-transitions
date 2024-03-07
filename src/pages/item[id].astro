@@ -1,0 +1,15 @@
+---
+import Card from '../components/card.astro'
+import Layout from '../layouts/layout.astro'
+
+export async function getStaticPaths() {
+  return [1,2,3,4,5].map(id => ({ params: { id: String(id) } }))
+}
+
+const { id } = Astro.params
+---
+
+<Layout>
+  <p>ID={id}</p>
+  <Card id={Number(id)} />
+</Layout>

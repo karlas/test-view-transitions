@@ -1,0 +1,24 @@
+---
+interface Props {
+  id: number;
+  small?: boolean
+}
+
+const { id, small } = Astro.props
+
+const COLORS = [
+  'bg-red-500',
+  'bg-yellow-500',
+  'bg-green-500',
+  'bg-blue-500',
+  'bg-indigo-500',
+]
+
+const classList = [
+  COLORS[id - 1],
+  small ? 'size-12 text-3xl rounded' : 'size-40 text-5xl rounded-full ml-auto mr-8',
+  'p-10 color:white bold text-center text-white flex items-center justify-center'
+]
+---
+
+<div class:list={classList} transition:name={String(id)}>{id}</div>

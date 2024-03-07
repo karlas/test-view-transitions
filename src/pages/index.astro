@@ -1,16 +1,8 @@
 ---
-
+import Card from '../components/card.astro'
+import Layout from '../layouts/layout.astro'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+	{[1,2,3,4,5].map(id => <a href={`/item${id}`} data-astro-prefetch="viewport"><Card id={id} small /></a>)}
+</Layout>
