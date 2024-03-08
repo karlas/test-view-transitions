@@ -19,6 +19,34 @@ const classList = [
   small ? 'size-12 text-3xl rounded' : 'size-40 text-5xl rounded-full ml-auto mr-8',
   'p-10 color:white bold text-center text-white flex items-center justify-center'
 ]
+
+const cid = String(id)
 ---
 
-<div class:list={classList} transition:name={String(id)}>{id}</div>
+<div class:list={classList} transition:name={cid}>
+  {id}
+  <counter-c>
+    <span 
+      class="color:black text-center bottom-1 text-xs" 
+      transition:persist 
+      transition:name={`c${cid}`} 
+    />
+  </counter-c>
+</div>
+
+<script>
+  class Counter extends HTMLElement {
+    constructor() {
+      super();
+      let count = 0;
+      const countSpan = this.querySelector('span');
+
+      setInterval(() => {
+        count++;
+        countSpan!.textContent = (count / 10).toLocaleString('en-US', {minimumFractionDigits: 1});
+      }, 100);
+    }
+  }
+
+  customElements.define('counter-c', Counter);
+</script>

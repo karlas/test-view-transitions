@@ -4,5 +4,9 @@ import Layout from '../layouts/layout.astro'
 ---
 
 <Layout>
-	{[1,2,3,4,5].map(id => <a href={`/item${id}`} data-astro-prefetch="viewport"><Card id={id} small /></a>)}
+	{[1,2,3,4,5].map(id => (
+		<a href={`/${id}`} data-astro-prefetch="viewport">
+			<Card id={id} small />
+		</a>
+	))}
 </Layout>
